@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Examples &rsaquo; Posts &mdash; Stisla</title>
+
+  <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../dist/modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="../dist/modules/jquery-selectric/selectric.css">
+
+  <link rel="stylesheet" href="../dist/css/demo.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit"><i class="ion ion-search"></i></button>
+          </div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="ion ion-ios-bell-outline"></i></a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+              <div class="dropdown-header">Notifications
+                <div class="float-right">
+                  <a href="#">View All</a>
+                </div>
+              </div>
+              <div class="dropdown-list-content">
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <img alt="image" src="../dist/img/avatar/avatar-1.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <img alt="image" src="../dist/img/avatar/avatar-2.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-3.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-4.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
+                    <div class="time">16 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+            <i class="ion ion-android-person d-lg-none"></i>
+            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="profile.html" class="dropdown-item has-icon">
+                <i class="ion ion-android-person"></i> Profile
+              </a>
+              <a href="#" class="dropdown-item has-icon">
+                <i class="ion ion-log-out"></i> Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">Stisla</a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../dist/img/avatar/avatar-1.jpeg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">Ujang Maman</div>
+              <div class="user-role">
+                Administrator
+              </div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li>
+              <a href="index.html"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="menu-header">Components</li>
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Components</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
+                <li><a href="general.html"><i class="ion ion-ios-circle-outline"></i> General</a></li>
+                <li><a href="articles.html"><i class="ion ion-ios-circle-outline"></i> Articles</a></li>
+                <li><a href="modal.html"><i class="ion ion-ios-circle-outline"></i> Modal</a></li>
+                <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
+                <li><a href="sweet-alert.html"><i class="ion ion-ios-circle-outline"></i> Sweet Alert</a></li>
+                <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="calendar.html"><i class="ion ion-calendar"></i><span>Calendar</span></a>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>Icons</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i> Ion Icons</a></li>
+                <li><a href="fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a></li>
+                <li><a href="flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
+                <li><a href="weather.html"><i class="ion ion-ios-circle-outline"></i> Weather</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-list-outline"></i><span>Forms</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="forms.html"><i class="ion ion-ios-circle-outline"></i> General Forms</a></li>
+                <li><a href="advanced-forms.html"><i class="ion ion-ios-circle-outline"></i> Advanced Forms</a></li>
+                <li><a href="validations.html"><i class="ion ion-ios-circle-outline"></i> Validations</a></li>
+                <li><a href="editors.html"><i class="ion ion-ios-circle-outline"></i> Editors</a></li>
+                <li><a href="multiple-upload.html"><i class="ion ion-ios-circle-outline"></i> Multiple Upload</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-clipboard"></i><span>Tables</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="table.html"><i class="ion ion-ios-circle-outline"></i> Table</a></li>
+                <li><a href="datatables.html"><i class="ion ion-ios-circle-outline"></i> DataTables</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a class="has-dropdown" href="#"><i class="ion ion-stats-bars"></i><span>Charts</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="chartjs.html"><i class="ion ion-ios-circle-outline"></i> ChartJS</a></li>
+                <li><a href="sparkline.html"><i class="ion ion-ios-circle-outline"></i> Sparkline</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="vector.html"><i class="ion ion-map"></i><span>Vector Map</span></a>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-location-outline"></i><span>Google Maps</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="simple.html"><i class="ion ion-ios-circle-outline"></i> Simple</a></li>
+                <li><a href="marker.html"><i class="ion ion-ios-circle-outline"></i> Marker</a></li>
+                <li><a href="multiple-marker.html"><i class="ion ion-ios-circle-outline"></i> Multiple Marker</a></li>
+                <li><a href="geolocation.html"><i class="ion ion-ios-circle-outline"></i> Geolocation</a></li>
+                <li><a href="geocoding.html"><i class="ion ion-ios-circle-outline"></i> Geocoding</a></li>
+                <li><a href="routes.html"><i class="ion ion-ios-circle-outline"></i> Routes</a></li>
+                <li><a href="advanced-routes.html"><i class="ion ion-ios-circle-outline"></i> Advanced Routes</a></li>
+                <li><a href="draggable-marker.html"><i class="ion ion-ios-circle-outline"></i> Draggable Marker</a></li>
+              </ul>
+            </li>
+
+            <li class="active">
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Examples</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="profile.html"><i class="ion ion-ios-circle-outline"></i> Profile</a></li>
+                <li><a href="login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
+                <li><a href="register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
+                <li><a href="forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a></li>
+                <li><a href="reset.html"><i class="ion ion-ios-circle-outline"></i> Reset Password</a></li>
+                <li><a href="subscribe.html"><i class="ion ion-ios-circle-outline"></i> Subscribe</a></li>
+                <li><a href="contact.html"><i class="ion ion-ios-circle-outline"></i> Contact</a></li>
+                <li class="active"><a href="posts.html"><i class="ion ion-ios-circle-outline"></i> Posts</a></li>
+                <li><a href="post-create.html"><i class="ion ion-ios-circle-outline"></i> Post Create</a></li>
+                <li><a href="404.html"><i class="ion ion-ios-circle-outline"></i> 404</a></li>
+                <li><a href="500.html"><i class="ion ion-ios-circle-outline"></i> 500</a></li>
+                <li><a href="403.html"><i class="ion ion-ios-circle-outline"></i> 403</a></li>
+                <li><a href="503.html"><i class="ion ion-ios-circle-outline"></i> 503</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-header">More</li>
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-nutrition"></i> Click Me</a>
+              <ul class="menu-dropdown">
+                <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Menu 1</a></li>
+                <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i> Menu 2</a>
+                  <ul class="menu-dropdown">
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a></li>
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a></li>
+                    <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i> Child Menu 3</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a></li>
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a></li>
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 4</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="ion ion-heart"></i> Badges <div class="badge badge-primary">10</div></a>
+            </li>
+            <li>
+              <a href="credits.html"><i class="ion ion-ios-information-outline"></i> Credits</a>
+            </li>          </ul>
+          <div class="p-3 mt-4 mb-4">
+            <a href="#" class="btn btn-primary btn-shadow btn-round has-icon has-icon-nofloat btn-block">
+              <i class="ion ion-help-buoy"></i> <div>Support</div>
+            </a>
+          </div>
+        </aside>
+      </div>
+      <div class="main-content">
+        <section class="section">
+          <h1 class="section-header">
+            <div>Posts</div>
+            <div class="float-right">
+              <a href="#" class="btn btn-primary btn-sm">Add New</a>
+            </div>
+          </h1>
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card mb-0">
+                  <div class="card-body">
+                    <ul class="nav nav-pills">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">All <span class="badge badge-light">5</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Draft <span class="badge badge-light">1</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pending <span class="badge badge-light">1</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Trash <span class="badge badge-light">0</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Posts</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="float-left">
+                      <select class="form-control selectric">
+                        <option>Action For Selected</option>
+                        <option>Move to Draft</option>
+                        <option>Move to Pending</option>
+                        <option>Delete Pemanently</option>
+                      </select>
+                    </div>
+                    <div class="float-right">
+                      <form>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                          <div class="input-group-append">                                            
+                            <button class="btn btn-primary"><i class="ion ion-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="clearfix mb-3"></div>
+
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <tr>
+                          <th class="text-center">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                              <label for="checkbox-all" class="custom-control-label"></label>
+                            </div>
+                          </th>
+                          <th>Title</th>
+                          <th>Category</th>
+                          <th>Author</th>
+                          <th>Created At</th>
+                          <th>Status</th>
+                        </tr>
+                        <tr>
+                          <td width="40">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-2">
+                              <label for="checkbox-2" class="custom-control-label"></label>
+                            </div>
+                          </td>
+                          <td>Laravel 5 Tutorial: Introduction
+                            <div class="table-links">
+                              <a href="#">View</a>
+                              <div class="bullet"></div>
+                              <a href="#">Edit</a>
+                              <div class="bullet"></div>
+                              <a href="#" class="text-danger">Trash</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#">Web Developer</a>, 
+                            <a href="#">Tutorial</a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+                            </a>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td><div class="badge badge-primary">Published</div></td>
+                        </tr>
+                        <tr>
+                          <td width="40">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-3">
+                              <label for="checkbox-3" class="custom-control-label"></label>
+                            </div>
+                          </td>
+                          <td>Laravel 5 Tutorial: Installing
+                            <div class="table-links">
+                              <a href="#">View</a>
+                              <div class="bullet"></div>
+                              <a href="#">Edit</a>
+                              <div class="bullet"></div>
+                              <a href="#" class="text-danger">Trash</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#">Web Developer</a>, 
+                            <a href="#">Tutorial</a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+                            </a>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td><div class="badge badge-primary">Published</div></td>
+                        </tr>
+                        <tr>
+                          <td width="40">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-4">
+                              <label for="checkbox-4" class="custom-control-label"></label>
+                            </div>
+                          </td>
+                          <td>Laravel 5 Tutorial: MVC
+                            <div class="table-links">
+                              <a href="#">View</a>
+                              <div class="bullet"></div>
+                              <a href="#">Edit</a>
+                              <div class="bullet"></div>
+                              <a href="#" class="text-danger">Trash</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#">Web Developer</a>, 
+                            <a href="#">Tutorial</a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+                            </a>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td><div class="badge badge-primary">Published</div></td>
+                        </tr>
+                        <tr>
+                          <td width="40">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-5">
+                              <label for="checkbox-5" class="custom-control-label"></label>
+                            </div>
+                          </td>
+                          <td>Laravel 5 Tutorial: CRUD
+                            <div class="table-links">
+                              <a href="#">View</a>
+                              <div class="bullet"></div>
+                              <a href="#">Edit</a>
+                              <div class="bullet"></div>
+                              <a href="#" class="text-danger">Trash</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#">Web Developer</a>, 
+                            <a href="#">Tutorial</a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+                            </a>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td><div class="badge badge-danger">Draft</div></td>
+                        </tr>
+                        <tr>
+                          <td width="40">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+                              <label for="checkbox-1" class="custom-control-label"></label>
+                            </div>
+                          </td>
+                          <td>Laravel 5 Tutorial: Deployment
+                            <div class="table-links">
+                              <a href="#">View</a>
+                              <div class="bullet"></div>
+                              <a href="#">Edit</a>
+                              <div class="bullet"></div>
+                              <a href="#" class="text-danger">Trash</a>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#">Web Developer</a>, 
+                            <a href="#">Tutorial</a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle" width="35" data-toggle="title" title=""> <div class="d-inline-block ml-1">Rizal Fakhri</div>
+                            </a>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td><div class="badge badge-warning">Pending</div></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="float-right">
+                      <nav>
+                        <ul class="pagination">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://multinity.com/">Multinity</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../dist/modules/jquery.min.js"></script>
+  <script src="../dist/modules/popper.js"></script>
+  <script src="../dist/modules/tooltip.js"></script>
+  <script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../dist/modules/moment.min.js"></script>
+  <script src="../dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../dist/js/sa-functions.min.js"></script>
+  
+  <script src="../dist/modules/jquery-selectric/jquery.selectric.min.js"></script>
+  <script>
+    $("[data-checkboxes]").each(function() {
+      var me = $(this),
+        group = me.data('checkboxes'),
+        role = me.data('checkbox-role');
+
+      me.change(function() {
+        var all = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"])'),
+          checked = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"]):checked'),
+          dad = $('[data-checkboxes="' + group + '"][data-checkbox-role="dad"]'),
+          total = all.length,
+          checked_length = checked.length;
+
+        if(role == 'dad') {
+          if(me.is(':checked')) {
+            all.prop('checked', true);
+          }else{
+            all.prop('checked', false);
+          }
+        }else{
+          if(checked_length >= total) {
+            dad.prop('checked', true);
+          }else{
+            dad.prop('checked', false);
+          }
+        }
+      });
+    });
+  </script>
+  <script src="../dist/js/scripts.min.js"></script>
+  <script src="../dist/js/custom.js"></script>
+  <script src="../dist/js/demo.js"></script>
+</body>
+</html>

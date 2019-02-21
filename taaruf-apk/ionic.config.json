@@ -1,0 +1,7 @@
+{
+  "name": "taaruf-new",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

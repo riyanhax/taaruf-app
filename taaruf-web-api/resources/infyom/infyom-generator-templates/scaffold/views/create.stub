@@ -1,0 +1,26 @@
+@extends('layouts.app', ['title' => 'Create $MODEL_NAME_HUMAN$'])
+
+@section('content')
+    <section class="section">
+        <h1 class="section-header">
+            <div>Create $MODEL_NAME_HUMAN$</div>
+        </h1>
+    
+        <div class="section-body">
+            @include('adminlte-templates::common.errors')
+
+            <div class="card">
+                <div class="card-header"><h4>Create $MODEL_NAME_HUMAN$</h4></div>
+                <div class="card-body">
+                    <div class="row">
+                        {!! Form::open(['route' => '$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
+
+                            @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection

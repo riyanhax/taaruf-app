@@ -1,0 +1,90 @@
+page-home {
+	ion-title {
+		margin-left: 80px;
+	}
+	.logo {
+		width: 60px;
+		position: absolute;
+		left: 20px;
+		top: 5px;
+		z-index: 1;
+		img {
+			width: 100%;
+		}
+	}
+	.slides {
+		height: 150px;
+		overflow: auto;
+		margin-top: -5px;
+		img {
+			width: 100%;
+		}
+		.swiper-pagination {
+			text-align: right;
+			padding-right: 5px;
+		}
+		.swiper-pagination-bullet {
+			border-radius: 0;
+		}
+		.swiper-pagination-bullet-active {
+			background-color: color($colors, primary);
+		}
+	}
+	.content {
+		background-color: #ededed;
+	}
+
+	.footer {
+		box-shadow: 0 0 40px rgba(0,0,0,.05);
+		background-color: color($colors, primary);
+	}
+	.segment {	
+		.segment-button {
+			height: 7rem;
+			color: #fff;
+			opacity: 1;
+			&.active {
+				opacity: 1;
+				color: color($colors, primary);
+			}
+			ion-icon {
+				margin-top: 4px;
+			}
+			div.text {
+				margin-top: -18px;
+				letter-spacing: 1px;
+				font-weight: 500;
+				font-size: 10px;
+			}
+			// &:nth-child(1),
+			// &:nth-child(5) {
+			// 	.icon {
+			// 		&:before {
+			// 			display: none;
+			// 		}
+			// 		background-image: url(../assets/imgs/perkara.svg);
+			// 		background-position: center;
+			// 		background-size: 100%;
+			// 		background-repeat: no-repeat;
+			// 		width: 20px;
+			// 		height: 20px;
+			// 		margin-top: 15px;
+			// 		margin-bottom: -1px;
+			// 	}
+			// }
+			// &:nth-child(2) {
+			// 	.icon {
+			// 		margin-top: 7px;
+			// 		margin-bottom: -3px;
+			// 		background-image: url(../assets/imgs/map.svg);
+			// 		width: 30px;
+			// 		height: 30px;
+			// 	}				
+			// }
+		}
+	}
+
+	.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+		display: none;
+	}
+}

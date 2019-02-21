@@ -1,0 +1,136 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+<div class="logo">
+	<img src="assets/imgs/main-logo.png">
+</div>
+  <ion-navbar color="primary"r>
+    <ion-title>Ta'aruf Syar'i</ion-title>
+    <button ion-button menuToggle end>
+    	<ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-slides pager>
+		<ion-slide *ngFor="let slide of homeCont.slider" (click)="slideDetail(slide)">
+			<img src="{{url}}{{slide.image}}">
+		</ion-slide>
+	</ion-slides>
+
+	<ion-searchbar  (keyup.enter)="find()" [(ngModel)]="keywords" placeholder="Cari Pasangan Ta'aruf"></ion-searchbar>
+
+	<section>
+		<div class="section-inner">
+			<h2>Baru Mendaftar
+				<button class="btnicon btnicon-view-all" (click)="viewAll()"></button>
+			</h2>
+			<div class="section-body">
+				<ion-list class="user-list">
+
+					<ion-item *ngFor="let profile of homeCont.profile; let i=index ">
+						<ion-avatar item-start width-30>
+							<img *ngIf="profile.gender == 'P' " src="assets/imgs/akhwat.png" width="30">
+							<img *ngIf="profile.gender == 'L' " src="assets/imgs/ikhwan.png" width="30">
+						</ion-avatar>
+						<h6>{{ profile.data.nama_asli ? profile.data.nama_asli.data_varchar : profile.data.nama_samaran.data_varchar}}</h6>
+						<div item-end color="primary">
+							{{profile.rating | number: '1.0-0' }}%
+						</div>
+						<button class="btn-cta btnicon btnicon-heart" item-end></button>
+						<button class="btn-cta circle" item-end (click)="profileDetail(profile)">
+							<ion-icon name="more"></ion-icon>
+						</button>
+					</ion-item>
+
+				</ion-list>
+			</div>
+		</div>
+	</section>
+
+	<section class="with-padding">
+
+		<div class="ads" *ngFor="let banner of homeCont.banner; let i=index " (click)="openurl(banner.link)" >
+			<img src="{{url}}{{banner.image}}">
+		</div>
+
+	</section>
+
+	<section class="with-padding">
+		<h2>Artikel</h2>
+
+		<div class="section-body">
+
+			<ion-card *ngFor="let blog of homeCont.blogs; let i=index " class="article" (click)="blogDetail(blog)">
+				<figure [style.background-image]="getBackground(url+blog.picture)">
+				</figure>
+			  <ion-card-content>
+				<ion-card-title>
+					{{blog.title}}
+				</ion-card-title>
+				<p [innerHTML]="blog.preview" ></p>
+				<div class="card-cta">
+
+					<ion-icon name="ios-heart" *ngIf="blog.bookmarked != null " (click)="coba()" ></ion-icon>
+					<ion-icon name="ios-heart-outline" *ngIf="blog.bookmarked == null "></ion-icon>
+					<!--<ion-icon name="share"></ion-icon>
+					<ion-icon name="ios-chatbubbles-outline"></ion-icon> -->
+				</div>
+			  </ion-card-content>
+			</ion-card>
+
+		</div>
+
+	</section>
+</ion-content>
+
+<ion-footer>
+	<ion-segment>
+		<ion-segment-button (click)="profile()">
+			<ion-icon name="person"></ion-icon>
+			<div class="text">Profile</div>
+		</ion-segment-button>
+		<ion-segment-button (click)="bookmark()">
+			<ion-icon name="heart"></ion-icon>
+			<div class="text">Bookmark</div>
+		</ion-segment-button>
+		<ion-segment-button (click)="blog()">
+			<ion-icon name="paper"></ion-icon>
+			<div class="text">Blog</div>
+		</ion-segment-button>
+		<ion-segment-button (click)="city()">
+			<ion-icon name="pin"></ion-icon>
+			<div class="text">Kota Ta'aruf</div>
+		</ion-segment-button>
+		<ion-segment-button (click)="candidate()">
+			<ion-icon name="person-add"></ion-icon>
+			<div class="text">Calon</div>
+		</ion-segment-button>
+	</ion-segment>
+</ion-footer>

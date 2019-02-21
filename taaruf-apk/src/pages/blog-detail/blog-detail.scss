@@ -1,0 +1,21 @@
+page-blog-detail {
+	.blog-detail {
+		figure {
+			margin: 0;
+			img {
+				width: 100%;
+			}
+		}
+		.blog-detail-body {
+			padding: 20px;
+			h2 {
+				font-size: 18px;
+			}
+			.detail-body-description {
+				p {
+					line-height: 22px;
+				}
+			}
+		}
+	}
+}

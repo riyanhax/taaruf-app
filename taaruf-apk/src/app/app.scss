@@ -1,0 +1,515 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+.custom-list {
+	&.reverse {
+		.item {
+			color: color($colors, primary); 
+			.label, .text-input {
+				color: #000;
+			}
+		}
+	}
+	.item {
+		background-color: transparent;
+		margin-left: 0 !important;
+		padding-left: 0;
+		margin-bottom: 10px;
+		color: #fff;
+		.icon {
+			font-size: 24px;
+			&:before {
+				margin-top: 4px;
+			}
+		}
+		.item-inner {
+			margin-left: 5px !important;
+			padding-right: 0 !important;
+		}
+		.label {
+			transform: translate3d(0, 12px, 0);
+			color: #fff;
+		}
+		&:last-child {
+			border-bottom-color: transparent;
+			box-shadow: none;
+			.item-inner {
+				border-bottom-color: #dedede;
+				box-shadow: inset 0 -1px 0 0 #dedede;
+			}
+		}
+		&.input-has-focus,
+		&.input-has-value {
+			.label[floating] {
+				transform: translate3d(0, 0, 0) scale(.8);
+			}
+			&:last-child {
+				border-bottom-color: transparent;
+				box-shadow: none;
+				.item-inner {
+					border-bottom-color: color($colors, primary);
+					box-shadow: inset 0 -1px 0 0 color($colors, primary);
+				}
+			}
+		}
+		.text-input {
+			margin: 0;
+			width: 100%;
+			height: 15px;
+			padding: 15px 0;
+		}
+	}
+}
+
+
+.divider {
+	margin-top: 30px;
+	&.sm {
+		margin-top: 10px;
+		margin-bottom: -5px;
+	}
+}
+
+.button {
+	&:not([clear]) {
+		box-shadow: 0 5px 30px lighten(color($colors, primary), 20%);
+	}
+	&[large] {
+		font-size: 16px;
+		height: 3.6em;
+		line-height: 40px;
+	}
+}
+
+
+.content {
+	&.primary {
+		background-color: color($colors, primary);
+	}
+}
+
+[fat] {
+	padding: 40px !important;
+}
+
+button[color="white"] {
+	background-color: #fff;
+	color: #000;
+	text-transform: none;
+}
+
+section {
+	margin: 10px;
+	&.with-padding {
+		padding: 2px;
+	}
+	.section-inner {
+		padding: 15px;
+		background-color: #fff;
+		box-shadow: 0 0 20px rgba(0,0,0, .05);
+	}
+	h2 {
+		margin:0;
+		font-size: 16px;
+		color: color($colors, primary);
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+		button {
+			float: right;
+			&.button {
+				margin-top: -7px;
+			}
+		}
+	}
+	.section-body {
+		margin-top: 5px;
+		.description {
+			line-height: 26px;
+		}
+	}
+
+	&.with-spin{
+		margin-top:60px;
+	}
+}
+
+.btnicon {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	width: 35px;
+	height: 20px;
+	display: inline-block;
+	background-color: transparent;
+	border: none;
+	&.btnicon-view-all {
+		background-image: url('../assets/icon/icon-view-all.png');
+	}
+	&.btnicon-heart {
+		background-image: url('../assets/icon/icon-heart.png');
+	}
+}
+
+.btn-cta {
+	background-color: transparent;
+	color: color($colors, primary);
+	&.circle {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: color($colors, primary);
+		color: #fff;
+	}
+	&.btnicon {
+		width: 20px;
+	}
+}
+
+[color="primary"]:not(button) {
+	color: color($colors, primary);
+}
+
+ion-avatar[width-30] {
+	min-width: 30px !important;
+	min-height: 30px !important;
+	img {
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
+.user-list {
+	margin-bottom: 0;
+	.item {
+		padding-left: 5px;
+	}
+}
+
+.searchbar {
+	.searchbar-input {
+		box-shadow: 0 0 30px rgba(0,0,0,.05);
+	}
+}
+
+.article {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	box-shadow: 0 0 30px rgba(0,0,0,.05);
+	margin-bottom: 30px;
+	&.fw {
+		figure {
+			width: 100%;
+			float: none;
+		}
+		.card-content {
+			margin: 0;
+			padding: 20px;
+		}
+	}
+	figure {
+		margin: 0;
+		float: left;
+		width: 150px;
+		height: 130px;
+		background-size: cover;
+		background-position: center;
+	}
+	.card-content {
+		padding: 5px 10px;
+		margin-left: 150px;
+		p {
+			font-size: 12px;
+		}
+	}
+	.card-title {
+		font-size: 14px;
+	}
+	.card-cta {
+		margin-top: 15px;
+		color: color($colors, primary);
+		.icon {
+			margin-right: 10px;
+		}
+	}
+}
+
+.ads {
+	img {
+		width: 100%;
+	}
+}
+
+ion-menu {
+	.content {
+		.list {
+			.item {
+				padding: 2px 15px;
+				.icon {
+					font-size: 22px;
+					margin-left: 5px;
+					color: color($colors, primary);
+					&:before {
+						margin-top: 3px;
+					}
+				}
+				.item-inner {
+					border-bottom: none;
+					margin-left: 15px;
+					font-weight: 700;
+					color: rgba(0,0,0,.7);
+				}
+			}
+		}
+	}
+}
+
+.card:not(.article) {
+	border-radius: 5px;
+	box-shadow: 0 0 40px rgba(0,0,0,.05);
+	margin-bottom: 30px;
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	&.primary {
+		border-top: 3px solid color($colors, primary);
+	}
+	&.danger {
+		border-top: 3px solid color($colors, danger);
+	}
+	&.warning {
+		border-top: 3px solid color($colors, warning);
+	}
+
+	.card-content {
+		padding: 20px;
+		.card-title {
+			font-family: 'Varela Round';
+			font-size: 14px;
+			line-height: 24px;
+			color: #4f4e59;
+			.time {
+				text-transform: uppercase;
+				font-weight: 600;
+				opacity: .6;
+				font-size: 10px;
+			}
+		}
+		.card-description {
+			margin-top: 10px;
+			h6 {
+				font-size: 12px;
+				color: #000;
+				margin-bottom: 5px;
+				margin-top: 5px;
+				font-weight: 600;
+			}
+			p {			
+				line-height: 26px;
+				font-size: 12px;
+				margin-bottom: 20px;
+			}
+		}
+		.card-attachment {
+			display: inline-block;
+			width: 100%;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			.attach-header {
+				font-size: 12px;
+				font-weight: 500;
+				margin-bottom: 10px;
+				color: #4f4e59;
+			}
+			ul {
+				padding: 0;
+				margin: 0;
+				li {
+					float: left;
+					display: inline-block;
+					width: 50px;
+					height: 50px;
+					border-radius: 3px;
+					overflow: hidden;
+					margin-right: 10px;
+					position: relative;
+					div:not(.count) {
+						display: inline-block;
+						width: 100%;
+						height: 100%;
+						background-size: cover;
+						background-position: center;
+					}
+					&.more {
+						.count {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(0,0,0,.5);
+							color: #fff;
+							text-align: center;
+							font-weight: 600;
+							line-height: 50px;
+						}
+					}
+				}
+
+				&.attach-list {
+					li {
+						float: none;
+						display: inline-block;
+						width: 100%;
+						margin: 0;
+						margin-bottom: 10px;
+						background-color: #f9f9f9;
+						padding: 10px;
+						border-radius: 3px;
+						height: 40px;
+						.icon, .image {
+							float: left;
+							margin-top: 3px;
+						}
+						.image {
+							width: 50px;
+							height: 50px;
+							border-radius: 3px;
+							overflow: hidden;
+							.bg {
+								display: inline-block;
+								width: 100%;
+								height: 100%;
+								background-position: center;
+								background-size: cover;
+							}
+						}
+						.text {
+							margin-left: 15px;
+							width: auto;
+							height: auto;
+							line-height: 0;
+							font-size: 12px;
+						}
+						&.auto-height {
+							height: auto;
+							.text {
+								line-height: 20px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.card-buttons {
+			text-align: center;
+			.button {
+				padding: 20px 30px;
+			}
+		}
+	}
+	&.padding-sm {
+		.card-content {
+			padding: 20px 10px;
+		}
+	}
+
+	.about-title{
+		padding-top:45px;
+	}
+
+
+}
+
+  .midscreen-spinner {
+    display: block;
+    margin: auto;
+    margin-top:60%;
+    width:15%;
+    height:15%;
+  }
+
+
+	.toast-styles{
+
+		.toast-wrapper {
+		   background: black;
+		   opacity: 0.8;
+		   border-radius: 5px;
+		   text-align: center;
+		   margin-bottom:3rem;
+		   min-width:50%;
+		   max-width:90%;
+		}
+
+		.toast-message {
+		   font-size: 14px;
+		   color: white;
+		   margin:0;
+		   padding:10px;
+		   padding-left:0;
+		   padding-right:0;
+
+		}
+	}
+
+	.choose-calon{
+		
+	}
+.vertical-align-content > *
+{
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+.vertical-align-content {
+	padding-top:30px;
+	padding-bottom:40px;
+	 position: relative;
+}
+
+
+	.circle-pic{
+	    width:170px;
+	    height:170px;
+	    -webkit-border-radius: 50%;
+	    border-radius: 50%;
+	    margin:0 auto;
+	    //border:solid color($colors, primary) 3px ;
+	    box-shadow: 0 5px 20px lighten(color($colors, primary), 20%);
+	}
+
+	.circle-button{
+		-webkit-border-radius: 50%;
+		background-color: color($colors, primary);
+		box-shadow: 0 5px 10px lighten(color($colors, primary), 20%);
+	    width:50px;
+	    height:50px;
+	    position:absolute;
+	    z-index:10000;
+	    top:150px;
+	    left:180px;
+	    background-image: url('../assets/icon/icon-camera.png');
+	    	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+	}
+
+.empty-message{
+	text-align: center;
+}

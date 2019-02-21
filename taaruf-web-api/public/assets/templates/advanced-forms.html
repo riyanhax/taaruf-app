@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Forms &rsaquo; Advanced-forms &mdash; Stisla</title>
+
+  <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../dist/modules/bootstrap-social/bootstrap-social.css">
+
+  <link rel="stylesheet" href="../dist/modules/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../dist/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="../dist/modules/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="../dist/modules/jquery-selectric/selectric.css">
+  <link rel="stylesheet" href="../dist/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="../dist/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="../dist/css/demo.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit"><i class="ion ion-search"></i></button>
+          </div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="ion ion-ios-bell-outline"></i></a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+              <div class="dropdown-header">Notifications
+                <div class="float-right">
+                  <a href="#">View All</a>
+                </div>
+              </div>
+              <div class="dropdown-list-content">
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <img alt="image" src="../dist/img/avatar/avatar-1.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <img alt="image" src="../dist/img/avatar/avatar-2.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-3.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-4.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
+                    <div class="time">16 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle dropdown-item-img">
+                  <div class="dropdown-item-desc">
+                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+            <i class="ion ion-android-person d-lg-none"></i>
+            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="profile.html" class="dropdown-item has-icon">
+                <i class="ion ion-android-person"></i> Profile
+              </a>
+              <a href="#" class="dropdown-item has-icon">
+                <i class="ion ion-log-out"></i> Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">Stisla</a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../dist/img/avatar/avatar-1.jpeg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">Ujang Maman</div>
+              <div class="user-role">
+                Administrator
+              </div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li>
+              <a href="index.html"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="menu-header">Components</li>
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Components</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
+                <li><a href="general.html"><i class="ion ion-ios-circle-outline"></i> General</a></li>
+                <li><a href="articles.html"><i class="ion ion-ios-circle-outline"></i> Articles</a></li>
+                <li><a href="modal.html"><i class="ion ion-ios-circle-outline"></i> Modal</a></li>
+                <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
+                <li><a href="sweet-alert.html"><i class="ion ion-ios-circle-outline"></i> Sweet Alert</a></li>
+                <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="calendar.html"><i class="ion ion-calendar"></i><span>Calendar</span></a>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>Icons</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i> Ion Icons</a></li>
+                <li><a href="fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a></li>
+                <li><a href="flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
+                <li><a href="weather.html"><i class="ion ion-ios-circle-outline"></i> Weather</a></li>
+              </ul>
+            </li>
+            <li class="active">
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-list-outline"></i><span>Forms</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="forms.html"><i class="ion ion-ios-circle-outline"></i> General Forms</a></li>
+                <li class="active"><a href="advanced-forms.html"><i class="ion ion-ios-circle-outline"></i> Advanced Forms</a></li>
+                <li><a href="validations.html"><i class="ion ion-ios-circle-outline"></i> Validations</a></li>
+                <li><a href="editors.html"><i class="ion ion-ios-circle-outline"></i> Editors</a></li>
+                <li><a href="multiple-upload.html"><i class="ion ion-ios-circle-outline"></i> Multiple Upload</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-clipboard"></i><span>Tables</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="table.html"><i class="ion ion-ios-circle-outline"></i> Table</a></li>
+                <li><a href="datatables.html"><i class="ion ion-ios-circle-outline"></i> DataTables</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a class="has-dropdown" href="#"><i class="ion ion-stats-bars"></i><span>Charts</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="chartjs.html"><i class="ion ion-ios-circle-outline"></i> ChartJS</a></li>
+                <li><a href="sparkline.html"><i class="ion ion-ios-circle-outline"></i> Sparkline</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="vector.html"><i class="ion ion-map"></i><span>Vector Map</span></a>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-location-outline"></i><span>Google Maps</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="simple.html"><i class="ion ion-ios-circle-outline"></i> Simple</a></li>
+                <li><a href="marker.html"><i class="ion ion-ios-circle-outline"></i> Marker</a></li>
+                <li><a href="multiple-marker.html"><i class="ion ion-ios-circle-outline"></i> Multiple Marker</a></li>
+                <li><a href="geolocation.html"><i class="ion ion-ios-circle-outline"></i> Geolocation</a></li>
+                <li><a href="geocoding.html"><i class="ion ion-ios-circle-outline"></i> Geocoding</a></li>
+                <li><a href="routes.html"><i class="ion ion-ios-circle-outline"></i> Routes</a></li>
+                <li><a href="advanced-routes.html"><i class="ion ion-ios-circle-outline"></i> Advanced Routes</a></li>
+                <li><a href="draggable-marker.html"><i class="ion ion-ios-circle-outline"></i> Draggable Marker</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Examples</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="profile.html"><i class="ion ion-ios-circle-outline"></i> Profile</a></li>
+                <li><a href="login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
+                <li><a href="register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
+                <li><a href="forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a></li>
+                <li><a href="reset.html"><i class="ion ion-ios-circle-outline"></i> Reset Password</a></li>
+                <li><a href="subscribe.html"><i class="ion ion-ios-circle-outline"></i> Subscribe</a></li>
+                <li><a href="contact.html"><i class="ion ion-ios-circle-outline"></i> Contact</a></li>
+                <li><a href="posts.html"><i class="ion ion-ios-circle-outline"></i> Posts</a></li>
+                <li><a href="post-create.html"><i class="ion ion-ios-circle-outline"></i> Post Create</a></li>
+                <li><a href="404.html"><i class="ion ion-ios-circle-outline"></i> 404</a></li>
+                <li><a href="500.html"><i class="ion ion-ios-circle-outline"></i> 500</a></li>
+                <li><a href="403.html"><i class="ion ion-ios-circle-outline"></i> 403</a></li>
+                <li><a href="503.html"><i class="ion ion-ios-circle-outline"></i> 503</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-header">More</li>
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-nutrition"></i> Click Me</a>
+              <ul class="menu-dropdown">
+                <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Menu 1</a></li>
+                <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i> Menu 2</a>
+                  <ul class="menu-dropdown">
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a></li>
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a></li>
+                    <li><a href="#" class="has-dropdown"><i class="ion ion-ios-circle-outline"></i> Child Menu 3</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 1</a></li>
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 2</a></li>
+                        <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"><i class="ion ion-ios-circle-outline"></i> Child Menu 4</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="ion ion-heart"></i> Badges <div class="badge badge-primary">10</div></a>
+            </li>
+            <li>
+              <a href="credits.html"><i class="ion ion-ios-information-outline"></i> Credits</a>
+            </li>          </ul>
+          <div class="p-3 mt-4 mb-4">
+            <a href="#" class="btn btn-primary btn-shadow btn-round has-icon has-icon-nofloat btn-block">
+              <i class="ion ion-help-buoy"></i> <div>Support</div>
+            </a>
+          </div>
+        </aside>
+      </div>
+      <div class="main-content">
+        <section class="section">
+          <h1 class="section-header">
+            <div>Advanced Forms</div>
+          </h1>
+
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Input Text</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Default Input Text</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Phone Number (US Format)</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="ion ion-ios-telephone"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control phone-number">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Password Strength</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="ion ion-locked"></i>
+                          </div>
+                        </div>
+                        <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+                      </div>
+                      <div id="pwindicator" class="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Currency</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            $
+                          </div>
+                        </div>
+                        <input type="text" class="form-control currency">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Purchase Code</label>
+                      <input type="text" class="form-control purchase-code" placeholder="ASDF-GHIJ-KLMN-OPQR">
+                    </div>
+                    <div class="form-group">
+                      <label>Invoice</label>
+                      <input type="text" class="form-control invoice">
+                    </div>
+                    <div class="form-group">
+                      <label>Date</label>
+                      <input type="text" class="form-control datemask" placeholder="YYYY/MM/DD">
+                    </div>
+                    <div class="form-group">
+                      <label>Credit Card</label>
+                      <input type="text" class="form-control creditcard">
+                    </div>
+                    <div class="form-group">
+                      <label>Tags</label>
+                      <input type="text" class="form-control inputtags">
+                    </div>
+                  </div>
+                </div>
+                <div class="card mt-5">
+                  <div class="card-header">
+                    <h4>Color Picker</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Simple</label>
+                      <input type="text" class="form-control colorpickerinput">
+                    </div>
+                    <div class="form-group">
+                      <label>Pick Your Color</label>
+                      <div class="input-group colorpickerinput">
+                        <input type="text" class="form-control">
+                        <div class="input-group-append">
+                          <div class="input-group-text">
+                            <i class="ion ion-paintbucket"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Select</h4>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="section-title mt-0">Default</h2>
+                    <div class="form-group">
+                      <label>Default Select</label>
+                      <select class="form-control">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                    <h2 class="section-title">Select 2</h2>
+                    <div class="form-group">
+                      <label>Select2</label>
+                      <select class="form-control select2">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Select2 Multiple</label>
+                      <select class="form-control select2" multiple="">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                        <option>Option 6</option>
+                      </select>
+                    </div>
+                    <h2 class="section-title">jQuery Selectric</h2>
+                    <div class="form-group">
+                      <label>jQuery Selectric</label>
+                      <select class="form-control selectric">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                        <option>Option 6</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>jQuery Selectric Multiple</label>
+                      <select class="form-control selectric" multiple="">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                        <option>Option 6</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mt-5">
+                  <div class="card-header">
+                    <h4>Date &amp; Time Picker</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Date Picker</label>
+                      <input type="text" class="form-control datepicker">
+                    </div>
+                    <div class="form-group">
+                      <label>Date Time Picker</label>
+                      <input type="text" class="form-control datetimepicker">
+                    </div>
+                    <div class="form-group">
+                      <label>Date Range Picker</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="ion ion-calendar"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control daterange">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Time Picker</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="ion ion-clock"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control timepicker">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Date Range Picker With Button</label>
+                      <button class="btn btn-primary daterange-btn has-icon"><i class="ion ion-calendar"></i> <span>Choose Date</span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://multinity.com/">Multinity</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../dist/modules/jquery.min.js"></script>
+  <script src="../dist/modules/popper.js"></script>
+  <script src="../dist/modules/tooltip.js"></script>
+  <script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../dist/modules/moment.min.js"></script>
+  <script src="../dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../dist/js/sa-functions.min.js"></script>
+  
+  <script src="../dist/modules/cleave-js/dist/cleave.min.js"></script>
+  <script src="../dist/modules/cleave-js/dist/addons/cleave-phone.us.js"></script>
+  <script src="../dist/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+  <script src="../dist/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="../dist/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+  <script src="../dist/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+  <script src="../dist/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+  <script src="../dist/modules/select2/dist/js/select2.full.min.js"></script>
+  <script src="../dist/modules/jquery-selectric/jquery.selectric.min.js"></script>
+
+  <script>
+    var cleavePN = new Cleave('.phone-number', {
+      phone: true,
+      phoneRegionCode: 'us'
+    });
+    var cleaveC = new Cleave('.currency', {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand'
+    });
+    var cleavePC = new Cleave('.purchase-code', {
+      delimiter: '-',
+      blocks: [4, 4, 4, 4],
+      uppercase: true
+    });
+    var cleaveI = new Cleave('.invoice', {
+      prefix: 'INV',
+      delimiter: '-',
+      blocks: [10],
+      uppercase: true
+    });
+    var cleaveD = new Cleave('.datemask', {
+      date: true,
+      datePattern: ['Y', 'm', 'd']
+    });
+    var cc_last_type;
+    var cleaveCC = new Cleave('.creditcard', {
+      creditCard: true,
+      onCreditCardTypeChanged: function(type) {
+        if(type !== 'unknown') {
+          if(type == 'amex') {
+            type = 'americanexpress';
+          }else if(type == 'mastercard') {
+            type = 'mastercard';
+          }else if(type == 'visa') {
+            type = 'visa';
+          }else if(type == 'diners') {
+            type = 'dinersclub';
+          }else if(type == 'discover') {
+            type = 'discover';
+          }else if(type == 'jcb') {
+            type = 'jcb';
+          }
+          $(".creditcard").removeClass(cc_last_type);
+          $(".creditcard").addClass(type);
+          cc_last_type = type;                        
+        }
+      }
+    });
+
+    $(".pwstrength").pwstrength();
+
+    $('.datepicker').daterangepicker({
+      locale: {format: 'YYYY-MM-DD'},
+      singleDatePicker: true,
+    });
+    $('.datetimepicker').daterangepicker({
+      locale: {format: 'YYYY-MM-DD hh:mm'},
+      singleDatePicker: true,
+      timePicker: true,
+      timePicker24Hour: true,
+    });
+    $('.daterange').daterangepicker({
+      locale: {format: 'YYYY-MM-DD'},
+      drops: 'up',
+      opens: 'left'
+    });
+    $(".timepicker").timepicker({
+      icons: {
+        up: 'ion ion-chevron-up',
+        down: 'ion ion-chevron-down'
+      }
+    });
+    $('.daterange-btn').daterangepicker({
+      ranges: {
+        'Today'       : [moment(), moment()],
+        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: moment().subtract(29, 'days'),
+      endDate  : moment()
+    }, function (start, end) {
+      $('.daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+    });
+
+    $(".colorpickerinput").colorpicker({
+      format: 'hex',
+      component: '.input-group-append',
+    });
+    $(".inputtags").tagsinput('items');
+  </script>
+  <script src="../dist/js/scripts.min.js"></script>
+  <script src="../dist/js/custom.js"></script>
+  <script src="../dist/js/demo.js"></script>
+</body>
+</html>

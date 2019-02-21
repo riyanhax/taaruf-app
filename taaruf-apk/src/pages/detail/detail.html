@@ -1,0 +1,562 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content  *ngIf="mapType == 'normal' ">
+	<div class="close" (click)="dismiss()">
+		<ion-icon name="close"></ion-icon>
+	</div>
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-body">
+				<div class="user-info">
+					<div class="picture">
+						<img *ngIf="profile.gender == 'P' " src="assets/imgs/akhwat.png">
+						<img *ngIf="profile.gender == 'L' " src="assets/imgs/ikhwan.png">
+					</div>
+					<div class="detail">
+						<h2>{{profile.data.nama_asli ? profile.data.nama_asli.data_varchar : profile.data.nama_samaran.data_varchar}}</h2>
+						<div item-end color="primary">
+							<button class="btn-cta btnicon btnicon-heart"></button>
+							{{profile.rating | number: '1.0-0' }}% Kriteria
+
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Diri
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Jenis Kelamin</ion-col>
+					<ion-col  *ngIf="profile.gender == 'P' " >Perempuan</ion-col>
+					<ion-col  *ngIf="profile.gender == 'L' " >Laki-laki</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tempat Lahir</ion-col>
+					<ion-col>{{profile.data.tempat_lahir.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tanggal Lahir</ion-col>
+					<ion-col>{{profile.data.tanggal_lahir.data_date}}</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>Status Pernikahan</ion-col>
+					<ion-col *ngIf="profile.data.status_pernikahan.data_varchar == 'belum menikah'">{{profile.data.status_pernikahan.data_varchar | titlecase }}</ion-col>
+					<ion-col  *ngIf="profile.data.status_pernikahan.data_varchar != 'belum menikah'">{{profile.data.status_pernikahan.data_varchar  | titlecase}}, {{profile.data.jumlah_anak.data_varchar}} Anak</ion-col>
+				</ion-row>
+				<!--<ion-row *ngIf="profile.data.nama_jalan_ktp.status_hidden == 'false' || profile.data.tinggal_nama_jalan.status_hidden == 'false'">
+					<ion-col>Alamat</ion-col>
+					<ion-col>{{profile.data.tinggal_nama_jalan.status_hidden == 'false' ? profile.data.tinggal_nama_jalan.data_varchar : profile.data.nama_jalan_ktp.data_varchar }}</ion-col>
+				</ion-row> -->
+				<ion-row>
+					<ion-col>Lokasi</ion-col>
+					<ion-col>{{profile.data.ktp_kotakab.data_varchar}}, {{profile.data.ktp_provinsi.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.hobby.data_varchar != null">
+					<ion-col>Hobby</ion-col>
+					<ion-col>{{profile.data.hobby.data_varchar}}</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>Keahlian</ion-col>
+					<ion-col>{{profile.data.keahlian.data_varchar}}</ion-col>
+				</ion-row>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keterangan Fisik
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Tinggi badan</ion-col>
+					<ion-col>{{profile.data.tinggi_badan.data_integer}} cm</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Berat badan</ion-col>
+					<ion-col>{{profile.data.berat_badan.data_integer}} Kg</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.warna_kulit.data_varchar != null">
+					<ion-col>Warna kulit</ion-col>
+					<ion-col>{{profile.data.warna_kulit.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.penilaian_wajah.data_integer != null">
+					<ion-col>Pernilaian diri terhadap wajah</ion-col>
+					<ion-col>{{profile.data.penilaian_wajah.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row >
+					<ion-col>Riwayat penyakit</ion-col>
+					<ion-col>{{profile.data.riwayat_penyakit.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Pendidikan
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.data.pend_sd.data_varchar != null">
+					<ion-col>SD</ion-col>
+					<ion-col>{{profile.data.pend_sd.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_smp.data_varchar != null">
+					<ion-col>SMP</ion-col>
+					<ion-col>{{profile.data.pend_smp.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_slta.data_varchar != null">
+					<ion-col>SLTA</ion-col>
+					<ion-col>{{profile.data.pend_slta.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_diploma.data_varchar != null">
+					<ion-col>Diploma</ion-col>
+					<ion-col>{{profile.data.pend_diploma.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_s1.data_varchar != null">
+					<ion-col>S1</ion-col>
+					<ion-col>{{profile.data.pend_s1.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_s2.data_varchar != null">
+					<ion-col>S2</ion-col>
+					<ion-col>{{profile.data.pend_s2.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_s3.data_varchar != null">
+					<ion-col>S3</ion-col>
+					<ion-col>{{profile.data.pend_s3.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_lain.data_varchar != null">
+					<ion-col>Lain-lain</ion-col>
+					<ion-col>{{profile.data.pend_lain.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pend_nonformal.data_varchar != null">
+					<ion-col>Non-formal</ion-col>
+					<ion-col>{{profile.data.pend_nonformal.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Pekerjaan
+			</div>
+			<div class="section-body">				
+				<ion-row>
+					<ion-col>Tipe Pekerjaan</ion-col>
+					<ion-col>{{profile.data.tipe_pekerjaan.data_varchar | titlecase}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.golongan_pekerjaan.data_varchar != null">
+					<ion-col>Golongan</ion-col>
+					<ion-col>{{profile.data.golongan_pekerjaan.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Bekerja sebagai</ion-col>
+					<ion-col>{{profile.data.nama_pekerjaan.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Penghasilan perbulan</ion-col>
+					<ion-col>{{profile.data.penghasilan_pekerjaan.data_integer}} Juta</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keluarga
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.data.tinggal_bersama.data_varchar != null">
+					<ion-col>Tinggal bersama</ion-col>
+					<ion-col>{{profile.data.tinggal_bersama.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pekerjaan_ayah.data_varchar">
+					<ion-col>Pekerjaan Ayah</ion-col>
+					<ion-col>{{profile.data.pekerjaan_ayah.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.pekerjaan_ibu.data_varchar != null">
+					<ion-col>Pekerjaan Ibu</ion-col>
+					<ion-col>{{profile.data.pekerjaan_ibu.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.anak_ke.data_varchar != null && profile.data.jumlah_saudara.data_varchar != null">
+					<ion-col>Anak ke</ion-col>
+					<ion-col>{{profile.data.anak_ke.data_varchar}} dari {{profile.data.jumlah_saudara.data_varchar}} Bersaudara </ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.jum_kakak_laki.data_varchar != null && profile.data.jum_kakak_perem.data_varchar != null">
+					<ion-col>Kakak</ion-col>
+					<ion-col>{{profile.data.jum_kakak_laki.data_varchar}} Lk, {{profile.data.jum_kakak_perem.data_varchar}} Prm</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.jum_adik_laki.data_varchar != null && profile.data.jum_adik_perem.data_varchar != null">
+					<ion-col>Adik</ion-col>
+					<ion-col>{{profile.data.jum_adik_laki.data_varchar}} Lk, {{profile.data.jum_adik_perem.data_varchar}} Prm</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keislaman
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.data.apakah_ikut_kajian_rutin.data_varchar != null">
+					<ion-col>Mengikuti kajian/pengajian rutin</ion-col>
+					<ion-col>{{profile.data.apakah_ikut_kajian_rutin.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.solat_5_waktu.data_varchar != null">
+					<ion-col>Sholat 5 waktu</ion-col>
+					<ion-col>{{profile.data.solat_5_waktu.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.membaca_alquran.data_varchar  != null">
+					<ion-col>Membaca Alquran</ion-col>
+					<ion-col>{{profile.data.membaca_alquran.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.data.sholat_sunnah.data_varchar != null">
+					<ion-col>Sholat sunnah</ion-col>
+					<ion-col>{{profile.data.sholat_sunnah.data_varchar}}</ion-col>
+				</ion-row>			
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Kriteria Diinginkan
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Status Pernikahan</ion-col>
+					<ion-col *ngIf="profile.data.kriteria_status.data_varchar == 'all' ">Pernah / Belum pernah Menikah</ion-col>
+					<ion-col  *ngIf="profile.data.kriteria_status.data_varchar == 'belum' ">Belum pernah menikah</ion-col>
+					<ion-col  *ngIf="profile.data.kriteria_status.data_varchar == 'sudah' ">Pernah menikah</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Usia</ion-col>
+					<ion-col>{{profile.data.min_usia.data_integer}} - {{profile.data.max_usia.data_integer}} Thn </ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tinggi Badan</ion-col>
+					<ion-col>{{profile.data.min_tinggi.data_integer}} - {{profile.data.max_tinggi.data_integer}} cm</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Berat Badan</ion-col>
+					<ion-col>{{profile.data.min_berat.data_integer}} - {{profile.data.max_berat.data_integer}} Kg</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Penghasilan Minimal</ion-col>
+					<ion-col>{{profile.data.minimum_penghasilan.data_integer}} Juta</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Afiliasi Agama</ion-col>
+					<ion-col>{{profile.data.kriteria_afiliasi_keagamaan.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+</ion-content>
+
+<ion-content  *ngIf="mapType == 'search' ">
+	<div class="close" (click)="dismiss()">
+		<ion-icon name="close"></ion-icon>
+	</div>
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-body">
+				<div class="user-info">
+					<div class="picture">
+						<img *ngIf="profile.gender == 'P' " src="assets/imgs/akhwat.png">
+						<img *ngIf="profile.gender == 'L' " src="assets/imgs/ikhwan.png">
+					</div>
+					<div class="detail">
+						<h2>{{profile.profiledata_data.nama_asli.hiddenstatus_data.status_hidden == 'true' ? profile.profiledata_data.nama_samaran.data_varchar : profile.profiledata_data.nama_asli.data_varchar}}</h2>
+						<div item-end color="primary">
+							<button class="btn-cta btnicon btnicon-heart"></button>
+							{{profile.rating | number: '1.0-0' }}% Kriteria
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Diri
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Jenis Kelamin</ion-col>
+					<ion-col  *ngIf="profile.gender == 'P' " >Perempuan</ion-col>
+					<ion-col  *ngIf="profile.gender == 'L' " >Laki-laki</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tempat Lahir</ion-col>
+					<ion-col>{{profile.profiledata_data.tempat_lahir.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tanggal Lahir</ion-col>
+					<ion-col>{{profile.profiledata_data.tanggal_lahir.data_date}}</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>Status Pernikahan</ion-col>
+					<ion-col *ngIf="profile.profiledata_data.status_pernikahan.data_varchar == 'belum menikah'">{{profile.profiledata_data.status_pernikahan.data_varchar | titlecase }}</ion-col>
+					<ion-col  *ngIf="profile.profiledata_data.status_pernikahan.data_varchar != 'belum menikah'">{{profile.profiledata_data.status_pernikahan.data_varchar  | titlecase}}, {{profile.profiledata_data.jumlah_anak.data_varchar}} Anak</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.nama_jalan_ktp.status_hidden == 'false' || profile.profiledata_data.tinggal_nama_jalan.status_hidden == 'false'">
+					<ion-col>Alamat</ion-col>
+					<ion-col>{{profile.profiledata_data.tinggal_nama_jalan.status_hidden == 'false' ? profile.profiledata_data.tinggal_nama_jalan.data_varchar : profile.profiledata_data.nama_jalan_ktp.data_varchar }}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Administratif</ion-col>
+					<ion-col>{{profile.profiledata_data.ktp_kotakab.data_varchar}}, {{profile.profiledata_data.ktp_provinsi.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.hobby.data_varchar != null">
+					<ion-col>Hobby</ion-col>
+					<ion-col>{{profile.profiledata_data.hobby.data_varchar}}</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>Keahlian</ion-col>
+					<ion-col>{{profile.profiledata_data.keahlian.data_varchar}}</ion-col>
+				</ion-row>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keterangan Fisik
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Tinggi badan</ion-col>
+					<ion-col>{{profile.profiledata_data.tinggi_badan.data_integer}} cm</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Berat badan</ion-col>
+					<ion-col>{{profile.profiledata_data.berat_badan.data_integer}} Kg</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.warna_kulit.data_varchar != null">
+					<ion-col>Warna kulit</ion-col>
+					<ion-col>{{profile.profiledata_data.warna_kulit.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.penilaian_wajah.data_integer != null">
+					<ion-col>Pernilaian diri terhadap wajah</ion-col>
+					<ion-col>{{profile.profiledata_data.penilaian_wajah.data_integer}}</ion-col>
+				</ion-row>
+				<ion-row >
+					<ion-col>Riwayat penyakit</ion-col>
+					<ion-col>{{profile.profiledata_data.riwayat_penyakit.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Pendidikan
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.profiledata_data.pend_sd.data_varchar != null">
+					<ion-col>SD</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_sd.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_smp.data_varchar != null">
+					<ion-col>SMP</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_smp.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_slta.data_varchar != null">
+					<ion-col>SLTA</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_slta.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_diploma.data_varchar != null">
+					<ion-col>Diploma</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_diploma.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_s1.data_varchar != null">
+					<ion-col>S1</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_s1.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_s2.data_varchar != null">
+					<ion-col>S2</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_s2.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_s3.data_varchar != null">
+					<ion-col>S3</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_s3.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_lain.data_varchar != null">
+					<ion-col>Lain-lain</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_lain.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pend_nonformal.data_varchar != null">
+					<ion-col>Non-formal</ion-col>
+					<ion-col>{{profile.profiledata_data.pend_nonformal.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Pekerjaan
+			</div>
+			<div class="section-body">				
+				<ion-row>
+					<ion-col>Tipe Pekerjaan</ion-col>
+					<ion-col>{{profile.profiledata_data.tipe_pekerjaan.data_varchar | titlecase}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.golongan_pekerjaan.data_varchar != null">
+					<ion-col>Golongan</ion-col>
+					<ion-col>{{profile.profiledata_data.golongan_pekerjaan.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Bekerja sebagai</ion-col>
+					<ion-col>{{profile.profiledata_data.nama_pekerjaan.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Penghasilan perbulan</ion-col>
+					<ion-col>{{profile.profiledata_data.penghasilan_pekerjaan.data_integer}} Juta</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keluarga
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.profiledata_data.tinggal_bersama.data_varchar != null">
+					<ion-col>Tinggal bersama</ion-col>
+					<ion-col>{{profile.profiledata_data.tinggal_bersama.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pekerjaan_ayah.data_varchar">
+					<ion-col>Pekerjaan Ayah</ion-col>
+					<ion-col>{{profile.profiledata_data.pekerjaan_ayah.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.pekerjaan_ibu.data_varchar != null">
+					<ion-col>Pekerjaan Ibu</ion-col>
+					<ion-col>{{profile.profiledata_data.pekerjaan_ibu.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.anak_ke.data_varchar != null && profile.profiledata_data.jumlah_saudara.data_varchar != null">
+					<ion-col>Anak ke</ion-col>
+					<ion-col>{{profile.profiledata_data.anak_ke.data_varchar}} dari {{profile.profiledata_data.jumlah_saudara.data_varchar}} Bersaudara </ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.jum_kakak_laki.data_varchar != null && profile.profiledata_data.jum_kakak_perem.data_varchar != null">
+					<ion-col>Kakak</ion-col>
+					<ion-col>{{profile.profiledata_data.jum_kakak_laki.data_varchar}} Lk, {{profile.profiledata_data.jum_kakak_perem.data_varchar}} Prm</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.jum_adik_laki.data_varchar != null && profile.profiledata_data.jum_adik_perem.data_varchar != null">
+					<ion-col>Adik</ion-col>
+					<ion-col>{{profile.profiledata_data.jum_adik_laki.data_varchar}} Lk, {{profile.profiledata_data.jum_adik_perem.data_varchar}} Prm</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Keislaman
+			</div>
+			<div class="section-body">
+				<ion-row *ngIf="profile.profiledata_data.apakah_ikut_kajian_rutin.data_varchar != null">
+					<ion-col>Mengikuti kajian/pengajian rutin</ion-col>
+					<ion-col>{{profile.profiledata_data.apakah_ikut_kajian_rutin.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.solat_5_waktu.data_varchar != null">
+					<ion-col>Sholat 5 waktu</ion-col>
+					<ion-col>{{profile.profiledata_data.solat_5_waktu.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.membaca_alquran.data_varchar  != null">
+					<ion-col>Membaca Alquran</ion-col>
+					<ion-col>{{profile.profiledata_data.membaca_alquran.data_varchar}}</ion-col>
+				</ion-row>
+				<ion-row *ngIf="profile.profiledata_data.sholat_sunnah.data_varchar != null">
+					<ion-col>Sholat sunnah</ion-col>
+					<ion-col>{{profile.profiledata_data.sholat_sunnah.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section">
+		<div class="section-inner">
+			<div class="section-title">
+				Kriteria Diinginkan
+			</div>
+			<div class="section-body">
+				<ion-row>
+					<ion-col>Status Pernikahan</ion-col>
+					<ion-col *ngIf="profile.profiledata_data.kriteria_status.data_varchar == 'all' ">Pernah / Belum pernah Menikah</ion-col>
+					<ion-col  *ngIf="profile.profiledata_data.kriteria_status.data_varchar == 'belum' ">Belum pernah menikah</ion-col>
+					<ion-col  *ngIf="profile.profiledata_data.kriteria_status.data_varchar == 'sudah' ">Pernah menikah</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Usia</ion-col>
+					<ion-col>{{profile.profiledata_data.min_usia.data_integer}} - {{profile.profiledata_data.max_usia.data_integer}} Thn </ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Tinggi Badan</ion-col>
+					<ion-col>{{profile.profiledata_data.min_tinggi.data_integer}} - {{profile.profiledata_data.max_tinggi.data_integer}} cm</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Berat Badan</ion-col>
+					<ion-col>{{profile.profiledata_data.min_berat.data_integer}} - {{profile.profiledata_data.max_berat.data_integer}} Kg</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Penghasilan Minimal</ion-col>
+					<ion-col>{{profile.profiledata_data.minimum_penghasilan.data_integer}} Juta</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>Afiliasi Agama</ion-col>
+					<ion-col>{{profile.profiledata_data.kriteria_afiliasi_keagamaan.data_varchar}}</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+
+</ion-content>
+
+<ion-footer>
+	<button *ngIf="profile.bookmarked == null " ion-button color="primary" block large (click)="add()" >
+		Bookmark
+	</button>
+	<button *ngIf="profile.bookmarked != null " ion-button color="primary" block large (click)="remove()">
+		Unbookmark
+	</button>
+</ion-footer>

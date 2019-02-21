@@ -1,0 +1,27 @@
+page-login {
+	.content {
+		color: #fff;
+		background-image: url('../assets/imgs/mozaik.png');
+		background-position: bottom;
+		background-size: 100%;
+		background-repeat: no-repeat;
+		a {
+			color: #fff;
+		}
+		.logo {
+			img {
+				width: 160px;
+			}
+		}
+		p {
+			line-height: 26px;
+		}
+		.link {
+			margin-top: 20px;
+		}
+	}
+	.footer {
+		padding: 20px;
+		text-align: center;
+	}
+}

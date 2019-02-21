@@ -1,0 +1,29 @@
+@extends('layouts.app', ['title' => '$MODEL_NAME_PLURAL_HUMAN$'])
+
+@section('content')
+    <section class="section">
+        <h1 class="section-header">
+            <div>$MODEL_NAME_PLURAL_HUMAN$</div>
+            <div class="float-right">
+               <a class="btn btn-primary btn-sm" href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') !!}">Add New</a>
+           </div>
+        </h1>
+    
+        <div class="section-body">
+            @include('flash::message')
+
+            <div class="card">
+                <div class="card-header"><h4>$MODEL_NAME_PLURAL_HUMAN$</h4></div>
+                <div class="card-body">
+                    @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                    $PAGINATE$
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+

@@ -1,0 +1,52 @@
+<!--
+  Generated template for the KirimProposalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title ></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="calon">
+
+            <ion-item >
+          
+              <ion-avatar item-start width-30>
+                <img *ngIf="calon.gender == 'P' " src="assets/imgs/akhwat.png" width="30">
+                <img *ngIf="calon.gender == 'L' " src="assets/imgs/ikhwan.png" width="30">
+              </ion-avatar>
+              <h6>{{calon.data.nama_asli.status_hidden == 'true' ? calon.data.nama_samaran.data_varchar : calon.data.nama_asli.data_varchar}}</h6>
+
+              <div item-end color="primary">
+                98%
+              </div>
+
+            <button class="btn-cta btnicon btnicon-heart" item-end></button>
+            
+            <button class="btn-cta circle" item-end (click)="profileDetail(calon);$event.stopPropagation()">
+              <ion-icon name="more"></ion-icon>
+            </button>
+
+          </ion-item>
+
+          <ion-list >
+              <ion-item>
+                    <ion-label floating>Tuliskan proposal untuk {{calon.name}}</ion-label>
+                    <ion-textarea autosize [(ngModel)]="isi"></ion-textarea>
+                  </ion-item>
+          </ion-list>
+		
+</ion-content>
+
+
+<ion-footer padding>
+  <button ion-button block color="primary" large  [disabled]="isi.length < 1" (click)="kirim()">
+    Kirim Proposal
+  </button>
+</ion-footer>

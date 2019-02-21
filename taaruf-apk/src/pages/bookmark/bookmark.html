@@ -1,0 +1,87 @@
+<!--
+  Generated template for the BookmarkPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+		<ion-content *ngIf="!returned" >
+		<ion-spinner name="crescent" class="midscreen-spinner"></ion-spinner> 
+</ion-content>
+
+
+<ion-content>
+	<section *ngIf="returned">
+		<div class="section-inner">
+
+			<h2>Calon Ta'aruf
+				<button ion-button color="primary" small icon-right (click)="proposal()" [disabled]="disablesend">
+					Kirim Proposal
+				</button>
+			</h2>
+			<div class="section-body">
+				<p *ngIf="calons?.length < 1 && returned == true;" class="empty-message">Belum ada seseorang yang anda bookmark</p>
+				<ion-list class="user-list">
+
+					<ion-item *ngFor="let calon of calons; let i=index " (click)="choosecalon(calon)" class="choose-calon" >
+					
+							<ion-avatar item-start width-30>
+							<img *ngIf="calon.gender == 'P' " src="assets/imgs/akhwat.png" width="30">
+							<img *ngIf="calon.gender == 'L' " src="assets/imgs/ikhwan.png" width="30">
+							</ion-avatar>
+							<h6>{{calon?.data.nama_asli.status_hidden == 'true' ? calon?.data.nama_samaran.data_varchar : calon?.data.nama_asli.data_varchar}}</h6>
+
+							<div item-end color="primary">
+								{{calon.rating | number: '1.0-0' }}%
+							</div>
+
+						<button class="btn-cta btnicon btnicon-heart" item-end></button>
+						
+						<button style="z-index:9999" class="btn-cta circle" item-end (click)="detail(calon);$event.stopPropagation()">
+							<ion-icon name="more"></ion-icon>
+						</button>
+
+					</ion-item>
+
+				</ion-list>
+			</div>
+		</div>
+	</section>
+
+	<section class="with-padding"  *ngIf="returned">
+		<h2>Artikel</h2>
+		<div class="section-body">
+
+			<p *ngIf="blogs?.length < 1 && returned == true;" class="empty-message">Belum ada blog yang anda bookmark</p>
+			<ion-card *ngFor="let blog of blogs; let i=index " class="article" (click)="blogDetail(blog)">
+				<figure [style.background-image]="getBackground(url+blog.picture)">
+				</figure>
+			  <ion-card-content>
+				<ion-card-title>
+					{{blog.title}}
+				</ion-card-title>
+				<p [innerHTML]="blog.preview" ></p>
+				<div class="card-cta">
+
+					<ion-icon name="ios-heart" *ngIf="blog.bookmarked != null " (click)="coba()" ></ion-icon>
+					<ion-icon name="ios-heart-outline" *ngIf="blog.bookmarked == null "></ion-icon>
+					<!--<ion-icon name="share"></ion-icon>
+					<ion-icon name="ios-chatbubbles-outline"></ion-icon> -->
+				</div>
+			  </ion-card-content>
+			</ion-card>
+		</div>
+	</section>
+
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+ 	</ion-infinite-scroll>
+ 	
+</ion-content>

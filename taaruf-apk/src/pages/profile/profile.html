@@ -1,0 +1,736 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle><ion-icon name="list"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content *ngIf="!returned" padding >
+		<ion-spinner name="crescent" class="midscreen-spinner"></ion-spinner> 
+</ion-content>
+
+
+<ion-content padding *ngIf="returned">
+	<section>
+		<br><br><br>
+		<h2>
+			Profil
+		</h2>
+		<div class="sectionion-body">
+			<ion-list class="custom-list reverse">
+				<ion-item>
+					<ion-label floating>Email</ion-label>
+					<ion-icon name="mail" item-left></ion-icon>
+					<ion-input type="text" [(ngModel)]="userData.email" ></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>No. HP</ion-label>
+					<ion-icon name="phone-portrait" item-left></ion-icon>
+					<ion-input type="number" [(ngModel)]="userData.no_hp" readonly></ion-input>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+	<section>
+		<h2>
+			Pribadi
+		</h2>
+	<div class="section-body">
+
+		<div text-center class="vertical-align-content">
+			
+			<img *ngIf="userData.gender == 'L' && profileData?.foto.data_varchar == null && tempImage == null" src="assets/imgs/ikhwan.png" class="circle-pic" imageViewer >
+			<img *ngIf="userData.gender == 'P' && profileData?.foto.data_varchar == null && tempImage == null" src="assets/imgs/akhwat.png" class="circle-pic" imageViewer >
+			<img *ngIf="tempImage == null && profileData?.foto.data_varchar != null" src="{{url}}{{profileData?.foto.data_varchar}}" class="circle-pic" imageViewer >
+			<img *ngIf="tempImage != null" [src]="tempImage" class="circle-pic" imageViewer >	
+			<button class="circle-button" (click)="takepic(0)"></button>
+			
+		</div>
+
+			<ion-list>
+				<ion-item >
+					<ion-label stacked>Nama Asli {{profileData?.nama_asli.required == 'true' ? '*' : '' }}</ion-label>
+					<ion-input class="red" type="text" [(ngModel)]="profileData?.nama_asli.data_varchar"></ion-input>
+					
+					<button ion-button item-end clear *ngIf="profileData?.nama_asli.can_hidden == 'true'" 
+					(click)="toggleHide('nama_asli')" >
+						{{profileData?.nama_asli.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.nama_asli.status_hidden == 'true' " >
+					<ion-label stacked>Nama Samaran {{profileData?.nama_samaran.required == 'true' ? '*' : '' }}</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.nama_samaran.data_varchar"></ion-input>
+					
+					<button ion-button item-end clear *ngIf="profileData?.nama_samaran.can_hidden  == 'true'" 
+					(click)="toggleHide('nama_samaran')" >
+						{{profileData?.nama_samaran.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Jenis Kelamin *</ion-label>
+					<ion-input type="text" value="{{userData.gender == 'L' ? 'Laki-laki' : 'Perempuan'}}" readonly></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Kota / Kab / Desa kelahiran *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.tempat_lahir.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tempat_lahir.can_hidden == 'true'" 
+					(click)="toggleHide('tempat_lahir')" >
+						{{profileData?.tempat_lahir.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Tanggal Lahir *</ion-label>
+					<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="profileData?.tanggal_lahir.data_date" ></ion-datetime>
+
+					<button ion-button item-end clear *ngIf="profileData?.tanggal_lahir.can_hidden == 'true'" 
+					(click)="toggleHide('tanggal_lahir')" >
+						{{profileData?.tanggal_lahir.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Status Pernikahan *</ion-label>
+				  	<ion-select interface="popover"  [(ngModel)]="profileData?.status_pernikahan.data_varchar">
+				    	<ion-option value="belum">Belum Menikah</ion-option>
+				    	<ion-option value="sudah">Pernah Menikah</ion-option>
+						<button ion-button item-end clear *ngIf="profileData?.status_pernikahan.can_hidden == 'true' " 
+						(click)="toggleHide('status_pernikahan')" >
+							{{profileData?.status_pernikahan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+						</button>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.status_pernikahan.data_varchar == 'sudah' " >
+					<ion-label stacked>Jumlah anak *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.jumlah_anak.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.jumlah_anak.can_hidden == 'true' " 
+					(click)="toggleHide('jumlah_anak')" >
+						{{profileData?.jumlah_anak.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label stacked>Hobby</ion-label>
+				  	<ion-textarea type="text" [(ngModel)]="profileData?.hobby.data_varchar"></ion-textarea>
+					<button ion-button item-end clear *ngIf="profileData?.hobby.can_hidden == 'true' " 
+					(click)="toggleHide('hobby')" >
+						{{profileData?.hobby.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Keahlian / Skill *</ion-label>
+				  	<ion-textarea type="text" [(ngModel)]="profileData?.keahlian.data_varchar"></ion-textarea>
+					<button ion-button item-end clear *ngIf="profileData?.keahlian.can_hidden == 'true' " 
+					(click)="toggleHide('keahlian')" >
+						{{profileData?.keahlian.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Tipe Tanda Pengenal *</ion-label>
+				  	<ion-select interface="popover"  [(ngModel)]="profileData?.tipe_tandapengenal.data_varchar">
+				    	<ion-option value="ktp">KTP</ion-option>
+				    	<ion-option value="passport">Passport</ion-option>
+						<button ion-button item-end clear *ngIf="profileData?.tipe_tandapengenal.can_hidden == 'true' " 
+						(click)="toggleHide('tipe_tandapengenal')" >
+							{{profileData?.tipe_tandapengenal.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+						</button>
+				  	</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Nomor Tanda Pengenal *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.nomor_tandapengenal.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.nomor_tandapengenal.can_hidden == 'true' " 
+						(click)="toggleHide('nomor_tandapengenal')" >
+							{{profileData?.nomor_tandapengenal.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Nomor Telp *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.nomor_telp.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.nomor_telp.can_hidden == 'true' " 
+						(click)="toggleHide('nomor_telp')" >
+							{{profileData?.nomor_telp.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+	<section>
+		<h2>
+			Alamat sesuai KTP
+		</h2>
+		<div class="section-body">
+			<ion-list >
+				<ion-item>
+					<ion-label stacked>Nama Jalan *</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.nama_jalan_ktp.data_varchar"></ion-textarea>
+					<button ion-button item-end clear *ngIf="profileData?.nama_jalan_ktp.can_hidden == 'true' " 
+						(click)="toggleHide('nama_jalan_ktp')" >
+							{{profileData?.nama_jalan_ktp.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>RT / RW *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.ktp_rtrw.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_rtrw.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_rtrw')" >
+							{{profileData?.ktp_rtrw.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Kelurahan *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.ktp_kelurahan.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_kelurahan.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_kelurahan')" >
+							{{profileData?.ktp_kelurahan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Kecamatan*</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.ktp_kecamatan.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_kecamatan.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_kecamatan')" >
+							{{profileData?.ktp_kecamatan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Kota/ Kabupaten *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.ktp_kotakab.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_kotakab.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_kotakab')" >
+							{{profileData?.ktp_kotakab.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Provinsi *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.ktp_provinsi.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_provinsi.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_provinsi')" >
+							{{profileData?.ktp_provinsi.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Kode Pos *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.ktp_kodepos.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.ktp_kodepos.can_hidden == 'true' " 
+						(click)="toggleHide('ktp_kodepos')" >
+							{{profileData?.ktp_kodepos.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Alamat tinggal sesuai KTP ? *</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.tinggal_sda_ktp.data_varchar">
+				    	<ion-option value="sama">Sama</ion-option>
+				    	<ion-option value="berbeda">Berbeda</ion-option>
+				  	</ion-select>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_sda_ktp.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_sda_ktp')" >
+							{{profileData?.tinggal_sda_ktp.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+			</ion-list>
+		</div>
+	</section>
+
+	<section *ngIf="profileData?.tinggal_sda_ktp.data_varchar == 'berbeda' ">
+		<h2>
+			Alamat Tinggal
+		</h2>
+		<div class="section-body">
+			<ion-list>			
+				<ion-item>
+					<ion-label stacked>Nama Jalan </ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.tinggal_nama_jalan.data_varchar"></ion-textarea>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_nama_jalan.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_nama_jalan')" >
+							{{profileData?.tinggal_nama_jalan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>RT / RW </ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.tinggal_rtrw.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_rtrw.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_rtrw')" >
+							{{profileData?.tinggal_rtrw.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Kelurahan </ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.tinggal_kelurahan.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_kelurahan.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_kelurahan')" >
+							{{profileData?.tinggal_kelurahan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>				
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Kecamatan*</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.tinggal_kecamatan.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_kecamatan.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_kecamatan')" >
+							{{profileData?.tinggal_kecamatan.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Kota/ Kabupaten *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.tinggal_kotakab.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_kotakab.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_kotakab')" >
+							{{profileData?.tinggal_kotakab.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Provinsi *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.tinggal_provinsi.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_provinsi.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_provinsi')" >
+							{{profileData?.tinggal_provinsi.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Kode Pos *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.tinggal_kodepos.data_varchar"></ion-input>
+					<button ion-button item-end clear *ngIf="profileData?.tinggal_kodepos.can_hidden == 'true' " 
+						(click)="toggleHide('tinggal_kodepos')" >
+							{{profileData?.tinggal_kodepos.status_hidden == 'true' ? 'Hidden' : 'Show'}}
+					</button>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+
+
+
+	<section>
+		<h2>
+			Pendidikan 
+		</h2>
+		<div class="section-body">
+			<ion-list >
+				<ion-item>
+				  <ion-label stacked>Pernah ditempuh</ion-label>
+				  <ion-select  multiple="true" interface="popover" [(ngModel)]="pendidikan" (ngModelChange)="makefield()">
+				    <ion-option *ngIf="profileData?.pend_sd.data_varchar != null" value="sd" selected>SD</ion-option>
+				    <ion-option *ngIf="profileData?.pend_sd.data_varchar == null" value="sd" >SD</ion-option>
+				    <ion-option *ngIf="profileData?.pend_smp.data_varchar != null" value="smp" selected>SMP</ion-option>
+				    <ion-option *ngIf="profileData?.pend_smp.data_varchar == null" value="smp">SMP</ion-option>
+				    <ion-option *ngIf="profileData?.pend_slta.data_varchar != null" value="slta" selected>SLTA</ion-option>
+				     <ion-option *ngIf="profileData?.pend_slta.data_varchar == null" value="slta">SLTA</ion-option>
+				    <ion-option *ngIf="profileData?.pend_diploma.data_varchar != null" value="diploma" selected>Diploma</ion-option>
+				    <ion-option *ngIf="profileData?.pend_diploma.data_varchar == null" value="diploma">Diploma</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s1.data_varchar != null" value="s1" selected>S1</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s1.data_varchar == null" value="s1">S1</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s2.data_varchar != null" value="s2" selected>S2</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s2.data_varchar == null" value="s2">S2</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s3.data_varchar != null" value="s3" selected>S3</ion-option>
+				    <ion-option *ngIf="profileData?.pend_s3.data_varchar == null" value="s3">S3</ion-option>
+				    <ion-option *ngIf="profileData?.pend_lain.data_varchar != null" value="lain" selected>Lain-lain</ion-option>
+				    <ion-option *ngIf="profileData?.pend_lain.data_varchar == null" value="lain">Lain-lain</ion-option>
+				    <ion-option  *ngIf="profileData?.pend_nonformal.data_varchar != null" value="nonformal" selected>Non-formal</ion-option>
+				    <ion-option  *ngIf="profileData?.pend_nonformal.data_varchar == null" value="nonformal">Non-formal</ion-option>
+				  </ion-select>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.sd == true || profileData?.pend_sd.data_varchar != null">
+					<ion-label stacked>Menempuh SD di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_sd.data_varchar"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.smp == true || profileData?.pend_smp.data_varchar != null">
+					<ion-label stacked>Menempuh SMP di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_smp.data_varchar" ></ion-textarea>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.slta == true || profileData?.pend_slta.data_varchar != null">
+					<ion-label stacked>Menempuh SLTA di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_slta.data_varchar"></ion-textarea>
+				</ion-item>
+
+				<ion-item *ngIf="field_pend.diploma == true || profileData?.pend_diploma.data_varchar != null">
+					<ion-label stacked>Menempuh DIPLOMA di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_diploma.data_varchar" ></ion-textarea>
+				</ion-item>
+
+				<ion-item *ngIf="field_pend.s1 == true || profileData?.pend_s1.data_varchar != null">
+					<ion-label stacked>Menempuh S1 di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_s1.data_varchar" ></ion-textarea>
+				</ion-item>
+
+				<ion-item *ngIf="field_pend.s2 == true || profileData?.pend_s2.data_varchar != null">
+					<ion-label stacked>Menempuh S2 di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_s2.data_varchar" ></ion-textarea>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.s3 == true || profileData?.pend_s3.data_varchar != null ">
+					<ion-label stacked>Menempuh S3 di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_s3.data_varchar" ></ion-textarea>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.lain == true || profileData?.pend_lain.data_varchar != null">
+					<ion-label stacked>Menempuh Pendidikan Lain di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_lain.data_varchar"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item *ngIf="field_pend.nonformal == true || profileData?.pend_nonformal.data_varcha != null">
+					<ion-label stacked>Menempuh Pendidikan Non-formal di</ion-label>
+					<ion-textarea type="text" [(ngModel)]="profileData?.pend_nonformal.data_varchar"></ion-textarea>
+				</ion-item>
+
+			</ion-list>
+		</div>
+	</section>
+	<section>
+		<h2>
+			Pekerjaan
+		</h2>
+		<div class="section-body">
+			<ion-list >
+
+				<ion-item>
+					<ion-label stacked>Tipe Pekerjaan *</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.tipe_pekerjaan.data_varchar">
+				    	<ion-option value="pns">PNS</ion-option>
+				    	<ion-option value="pegawai swasta">Pegawai Swasta</ion-option>
+				    	<ion-option value="wirausaha">Wirausaha</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.tipe_pekerjaan.data_varchar == 'pns' ">
+					<ion-label stacked>Golongan *</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.golongan_pekerjaan.data_varchar"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Bekerja Sebagai *</ion-label>
+					<ion-input type="text"  [(ngModel)]="profileData?.nama_pekerjaan.data_varchar"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Penghasilan perbulan (Juta) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.penghasilan_pekerjaan.data_integer"></ion-input>
+				</ion-item>
+
+			</ion-list>
+		</div>
+	</section>
+	<section>
+		<h2>
+			Fisik
+		</h2>
+		<div class="section-body">
+			<ion-list >
+				<ion-item>
+					<ion-label stacked>Tinggi Badan (cm) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.tinggi_badan.data_integer"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Berat Badan (kg) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.berat_badan.data_integer" ></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Warna Kulit</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.warna_kulit.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Penilaian terhadap wajah anda (1-10)</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.penilaian_wajah.data_integer">
+				    	<ion-option value="1">1</ion-option>
+				    	<ion-option value="2">2</ion-option>
+				    	<ion-option value="3">3</ion-option>
+				    	<ion-option value="4">4</ion-option>
+				    	<ion-option value="5">5</ion-option>
+				    	<ion-option value="6">6</ion-option>
+				    	<ion-option value="7">7</ion-option>
+				    	<ion-option value="8">8</ion-option>
+				    	<ion-option value="9">9</ion-option>
+				    	<ion-option value="10">10</ion-option>
+				  	</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Riwayat Penyakit *</ion-label>
+					<ion-input type="text"  [(ngModel)]="profileData?.riwayat_penyakit.data_varchar"></ion-input>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+	<section>
+		<h2>
+			Keluarga
+		</h2>
+		<div class="section-body">
+			<ion-list >
+				<ion-item>
+					<ion-label stacked>Tinggal Bersama</ion-label>
+					<ion-input type="text"  [(ngModel)]="profileData?.tinggal_bersama.data_varchar"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Pekerjaan Ayah</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.pekerjaan_ayah.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Pekerjaan Ibu</ion-label>
+					<ion-input type="text" [(ngModel)]="profileData?.pekerjaan_ibu.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Anak ke</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.anak_ke.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Dari Berapa Bersaudara</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.jumlah_saudara.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Jumlah Kakak Laki-laki</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.jum_kakak_laki.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Jumlah Kakak Perempuan</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.jum_kakak_perem.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Jumlah Adik Laki-laki</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.jum_adik_laki.data_varchar"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Jumlah Adik Perempuan</ion-label>
+					<ion-input type="number"[(ngModel)]="profileData?.jum_adik_perem.data_varchar"></ion-input>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+
+
+	<section>
+		<h2>
+			Keislaman
+		</h2>
+		<div >
+			<ion-list>
+				<ion-item>
+					<ion-label stacked>Apakah mengikuti kajian / pengajian rutin ?</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.apakah_ikut_kajian_rutin.data_varchar">
+				    	<ion-option value="tidak">Belum</ion-option>
+				    	<ion-option value="ya">Iya</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.apakah_ikut_kajian_rutin.data_varchar == 'ya' ">
+					<ion-label stacked>Selama berapa lama ?</ion-label>
+					<ion-input type="text" [(ngModel)]="waktu_kajian"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Sholat 5 waktu</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.solat_5_waktu.data_varchar">
+				    	<ion-option value="Komitmen">Komitmen</ion-option>
+				    	<ion-option value="Belum komitmen">Belum Komitmen</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Membaca Alquran</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.membaca_alquran.data_varchar">
+				    	<ion-option value="Komitmen">Komitmen</ion-option>
+				    	<ion-option value="Kadang">Kadang</ion-option>
+				    	<ion-option value="Belum komitmen">Belum Komitmen</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.membaca_alquran.data_varchar == 'Komitmen' ">
+					<ion-label stacked>Berapa juz perhari</ion-label>
+					<ion-input type="number" [(ngModel)]="juz_perhari">
+				  	</ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Sholat sunnah</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.sholat_sunnah.data_varchar">
+				    	<ion-option value="Komitmen">Komitmen</ion-option>
+				    	<ion-option value="Kadang">Kadang</ion-option>
+				    	<ion-option value="Belum komitmen">Belum Komitmen</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.sholat_sunnah.data_varchar == 'Komitmen' ">
+					<ion-label stacked>Sebutkan Sholat Sunnah</ion-label>
+					<ion-select  multiple="true" [(ngModel)]="sholat_sunnah">
+				    	<ion-option value="Wudhu">Shalat Wudhu</ion-option>
+				    	<ion-option value="Tahiyatul Masjid">Shalat Tahiyatul Masjid</ion-option>
+				    	<ion-option value="Dhuha">Shalat Dhuha</ion-option>
+				    	<ion-option value="Rawatib">Shalat Rawatib</ion-option>
+				    	<ion-option value="Tahajud">Shalat Tahajud</ion-option>
+				    	<ion-option value="Istikharah">Shalat Istikharah</ion-option>
+				    	<ion-option value="Hajat">Shalat Hajat</ion-option>
+				    	<ion-option value="Taubat">Shalat Taubat</ion-option>
+				    	<ion-option value="Gerhana">Shalat Gerhana</ion-option>
+				    	<ion-option value="Tasbih">Shalat Tasbih</ion-option>
+				  	</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Puasa sunnah</ion-label>
+					<ion-select interface="popover" [(ngModel)]="profileData?.puasa_sunnah.data_varchar">
+				    	<ion-option value="Komitmen">Komitmen</ion-option>
+				    	<ion-option value="Kadang">Kadang</ion-option>
+				    	<ion-option value="Belum komitmen">Belum Komitmen</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.puasa_sunnah.data_varchar == 'Komitmen' ">
+					<ion-label stacked>Sebutkan Puasa Sunnah</ion-label>
+					<ion-select  multiple="true" [(ngModel)]="puasa_sunnah">
+				    	<ion-option value="Arafah">Arafah</ion-option>
+				    	<ion-option value="Dzulhijjah">Dzulhijjah</ion-option>
+				    	<ion-option value="Tasu’a">Tasu’a</ion-option>
+				    	<ion-option value="Asyura">Asyura / 10 Muharram</ion-option>
+				    	<ion-option value="Syawal">Syawal</ion-option>
+				    	<ion-option value="Senin dan Kamis">Senin dan Kamis</ion-option>
+				    	<ion-option value="Daud">daud</ion-option>
+				    	<ion-option value="Sya’ban">Sya’ban</ion-option>
+				    	<ion-option value="Asyhurul Hurum">Asyhurul Hurum</ion-option>
+				    	<ion-option value="Ayyamul bidh">Ayyamul bidh</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Afiliasi keagamaan</ion-label>
+					<ion-select [(ngModel)]="profileData?.afiliasi_keagamaan.data_varchar">
+				    	<ion-option value="Umum (tidak punya)">Umum (tidak punya afiliasi khusus)</ion-option>
+				    	<ion-option value="NU">NU</ion-option>
+				    	<ion-option value="Muhammadiyah">Muhammadiyah</ion-option>
+				    	<ion-option value="Syarikat Islam">Syarikat Islam</ion-option>
+				    	<ion-option value="Wahdah Islamiyyah">Wahdah Islamiyyah</ion-option>
+				    	<ion-option value="Tarbiyah">Tarbiyah</ion-option>
+				    	<ion-option value="HTI">HTI</ion-option>
+				    	<ion-option value="Jamaah Tabligh">Jamaah Tabligh</ion-option>
+				    	<ion-option value="Salafy">Salafy</ion-option>
+				    	<ion-option value="Muhammadiyah">Muhammadiyah</ion-option>
+				    	<ion-option value="MTA">MTA</ion-option>
+				    	<ion-option value="Lainnya">Lainnya</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="profileData?.afiliasi_keagamaan.data_varchar == 'Lainnya' ">
+					<ion-label stacked>Sebutkan</ion-label>
+					<ion-input type="text"[(ngModel)]="profileData?.afiliasi_keagamaan.data_varchar"></ion-input>
+				</ion-item>
+			</ion-list>
+		</div>
+	</section>
+
+		<section>
+		<h2>
+			Kriteria yang diinginkan
+		</h2>
+		<div class="section-body">
+			<ion-list>				
+				<ion-item>
+					<ion-label stacked>Usia min *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.min_usia.data_integer"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Usia Maks (cm) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.max_usia.data_integer"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Tinggi Badan Min (cm) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.min_tinggi.data_integer"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Tinggi Badan Maks (cm) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.max_tinggi.data_integer"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Berat Badan Min (kg) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.min_berat.data_integer" ></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Berat Badan Maks (kg) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData?.max_berat.data_integer" ></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label stacked>Minimum penghasilan (Juta) *</ion-label>
+					<ion-input type="number" [(ngModel)]="profileData.minimum_penghasilan.data_integer" ></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Afilasi Kegamaan *</ion-label>					
+					<ion-select [(ngModel)]="profileData?.kriteria_afiliasi_keagamaan.data_varchar">
+				    	<ion-option value="Umum (tidak punya)">Umum (tidak punya afiliasi khusus)</ion-option>
+				    	<ion-option value="NU">NU</ion-option>
+				    	<ion-option value="Muhammadiyah">Muhammadiyah</ion-option>
+				    	<ion-option value="Syarikat Islam">Syarikat Islam</ion-option>
+				    	<ion-option value="Wahdah Islamiyyah">Wahdah Islamiyyah</ion-option>
+				    	<ion-option value="Tarbiyah">Tarbiyah</ion-option>
+				    	<ion-option value="HTI">HTI</ion-option>
+				    	<ion-option value="Jamaah Tabligh">Jamaah Tabligh</ion-option>
+				    	<ion-option value="Salafy">Salafy</ion-option>
+				    	<ion-option value="Muhammadiyah">Muhammadiyah</ion-option>
+				    	<ion-option value="MTA">MTA</ion-option>
+				    	<ion-option value="Lainnya">Lainnya</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Pendidikan Minimal *</ion-label>					
+					<ion-select [(ngModel)]="profileData?.pendidikan_minimal.data_varchar">
+					    <ion-option value="sd">SD</ion-option>
+					    <ion-option value="smp">SMP</ion-option>
+					    <ion-option value="slta">SLTA</ion-option>
+					    <ion-option value="diploma">Diploma</ion-option>
+					    <ion-option value="s1">S1</ion-option>
+					    <ion-option value="s2">S2</ion-option>
+					    <ion-option value="s3">S3</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Status Pernikahan *</ion-label>					
+					<ion-select [(ngModel)]="profileData?.kriteria_status.data_varchar">
+					    <ion-option value="belum">Belum menikah</ion-option>
+					    <ion-option value="sudah">Sudah Pernah menikah</ion-option>
+					    <ion-option value="all">Kedua-duanya</ion-option>
+				  	</ion-select>
+				</ion-item>
+
+			</ion-list>
+		</div>
+	</section>
+
+	<br> <br> <br> <br> 
+</ion-content>
+<ion-footer padding *ngIf="profileData">
+	<button ion-button block color="primary" large (click)="send()">
+		Simpan Perubahan
+	</button>
+</ion-footer>

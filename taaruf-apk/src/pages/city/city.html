@@ -1,0 +1,36 @@
+<!--
+  Generated template for the CityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content *ngIf="!returned" padding >
+		<ion-spinner name="crescent" class="midscreen-spinner"></ion-spinner> 
+</ion-content>
+
+<ion-content>
+	<section class="with-padding" *ngIf="returned">
+		<h2>Kota Ta'aruf</h2>
+		<div class="section-body">
+			
+			<ion-card *ngFor="let kota of kotas;let i=index " class="article fw">
+				<figure  [style.background-image]="getBackground(url+kota.nama)">
+				</figure>
+			  <ion-card-content>
+				<ion-card-title>
+					{{kota.city_data.city_name}}
+				</ion-card-title>
+				<p>{{kota.address}}</p>
+			  </ion-card-content>
+			</ion-card>
+		</div>
+	</section>
+</ion-content>

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="primary">
+	<div fat text-center>
+		<div class="logo">
+			<img src="assets/imgs/logo.png">
+		</div>
+
+		<ion-list class="custom-list">
+			<ion-item>
+				<ion-icon name="phone-portrait" item-left></ion-icon>
+				<ion-label floating>Nomer HP</ion-label>
+				<ion-input type="number" [(ngModel)]="phone"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-icon name="mail" item-left></ion-icon>
+				<ion-label floating>Email</ion-label>
+				<ion-input type="text" [(ngModel)]="email"></ion-input>
+			</ion-item>
+			<ion-item>
+			  <ion-label floating>Jenis Kelamin</ion-label>
+			  <ion-select [(ngModel)]="gender">
+			    <ion-option value="L">Laki-laki</ion-option>
+			    <ion-option value="P">Perempuan</ion-option>
+			  </ion-select>
+			</ion-item>
+
+		</ion-list>
+
+		<div class="cta">
+			<button ion-button color="secondary" block round (click)="register()">
+				Daftar
+			</button>
+		</div>
+		<div class="link">
+			Saya setuju dengan ketentuan layanan dan kebijakan privasi
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer>
+	<button ion-button small color="white" (click)="login()">
+		Sudah punya akun? Masuk
+	</button>
+</ion-footer>

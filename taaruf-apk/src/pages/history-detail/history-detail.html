@@ -1,0 +1,120 @@
+<!--
+  Generated template for the HistoryDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf="proposal">
+	<section class="with-padding">
+		<h2>
+			Rincian Proposal
+		</h2>
+		<div class="section-body">
+
+            <ion-item >
+          
+              <ion-avatar item-start width-30>
+                <img *ngIf="proposal?.gender == 'P' " src="assets/imgs/akhwat.png" width="30">
+                <img *ngIf="proposal?.gender == 'L' " src="assets/imgs/ikhwan.png" width="30">
+              </ion-avatar>
+              <h6>{{proposal?.data.nama_asli.status_hidden == 'true' ? proposal?.data.nama_samaran.data_varchar : proposal?.data.nama_asli.data_varchar | titlecase}}</h6>
+
+              <div item-end color="primary">
+                {{proposal?.rating}}%
+              </div>
+
+            <button class="btn-cta btnicon btnicon-heart" item-end></button>
+            
+            <button class="btn-cta circle" item-end (click)="profileDetail(proposal);$event.stopPropagation()">
+              <ion-icon name="more"></ion-icon>
+            </button>
+
+          </ion-item>
+
+  	      <ion-card *ngIf="proposal?.balasan_penerima != null">
+	        <ion-card-content>
+	          <ion-card-title *ngIf="proposal?.id_pengirim == userData.id">
+	            Balasan dari  {{proposal?.data.nama_asli.status_hidden == 'true' ? proposal?.data.nama_samaran.data_varchar : proposal?.data.nama_asli.data_varchar | titlecase}}
+	          </ion-card-title>
+
+	          <ion-card-title *ngIf="proposal?.id_pengirim != userData.id">
+	            Balasan dari anda
+	          </ion-card-title>
+
+	          <ion-row>
+	            <ion-col>Proposal</ion-col>
+	            <ion-col> {{proposal?.respon == 'diterima' ? 'Diterima' : 'Ditolak'}}</ion-col>
+	          </ion-row>
+	          <ion-row>
+				<ion-col col-12>Isi balasan</ion-col>
+				<ion-col>
+					{{proposal?.balasan_penerima}}
+				</ion-col>
+	          </ion-row>
+	        </ion-card-content>
+	      </ion-card>
+
+	      <ion-card [ngClass]="proposal?.readed === 'yes' ? 'primary' : 'warning' ">
+	        <ion-card-content>
+	          <ion-card-title>
+	            Dikirim {{proposal?.id_penerima == userData.id?'Oleh':'Ke'}}  {{proposal?.data.nama_asli.status_hidden == 'true' ? proposal?.data.nama_samaran.data_varchar : proposal?.data.nama_asli.data_varchar | titlecase}}
+	          </ion-card-title>
+	          <ion-row>
+	            <ion-col>Tanggal</ion-col>
+	            <ion-col>{{proposal?.created_at}}</ion-col>
+	          </ion-row>
+	          <ion-row>
+	            <ion-col>{{proposal?.id_penerima == userData.id ? 'Pengirim':'Penerima'}}</ion-col>
+	            <ion-col>{{proposal?.data.nama_asli.status_hidden == 'true' ? proposal?.data.nama_samaran.data_varchar : proposal?.data.nama_asli.data_varchar | titlecase}}</ion-col>
+	          </ion-row>
+	          <ion-row>
+	            <ion-col>Status</ion-col>
+	            <ion-col> {{proposal?.readed == 'yes' ? 'Dibaca' : 'Belum Dibaca'}}</ion-col>
+	          </ion-row>
+	          <ion-row>
+				<ion-col col-12>Teks</ion-col>
+				<ion-col>
+					{{proposal?.isi_proposal}}
+				</ion-col>
+	          </ion-row>
+
+	        <ion-row class="replybox" *ngIf="proposal?.respon == 'pending' && proposal?.id_penerima == userData.id" >
+	      	<ion-col col-8>
+		  		<ion-select *ngIf="togglePressed" interface="popover" placeholder="Terima" [(ngModel)]="balasan.respon">
+				    <ion-option value="diterima" selectedText>Terima</ion-option>
+				    <ion-option value="ditolak">Menolak</ion-option>
+				 </ion-select>
+	      	</ion-col>
+	      	<ion-col col-4>
+	      		 <button ion-button *ngIf="!togglePressed" (click)="toggleReply()" >Balas  <ion-icon name="ios-undo" item-end></ion-icon></button>
+	      		  <button ion-button *ngIf="togglePressed" (click)="sendReply()" >Kirim  <ion-icon name="ios-undo" item-end></ion-icon></button>
+	      	</ion-col>
+	      	<ion-col *ngIf="togglePressed" col-12>
+	      		<ion-textarea [(ngModel)]="balasan.balasan_penerima" placeholder="tuliskan balasan anda" autosize></ion-textarea>
+	      	</ion-col>
+	      </ion-row>
+	        </ion-card-content>
+
+
+
+
+	      </ion-card>
+
+
+	     
+
+	  </div>
+	</section>
+</ion-content>
