@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class UrlProvider {
-	public storageImgUrl:string = 'http://demo.multinity.com/taaruf-admin/public/media/';
-	public storagePP:string ='http://demo.multinity.com/taaruf-admin/public/profile_pic/';
+	public storageImgUrl:string = 'http://localhost:8000/taaruf-admin/public/media/';
+	public storagePP:string ='http://localhost:8000/taaruf-admin/public/profile_pic/';
   constructor() {
     console.log('Hello UrlProvider Provider');
   }
