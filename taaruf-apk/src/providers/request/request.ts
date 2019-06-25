@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 
-let apiUrl = 'http://demo.multinity.com/taaruf-admin/public/api/';
+let apiUrl = 'http://localhost:8000/taaruf-admin/public/api/';
 
 @Injectable()
 export class RequestProvider {
